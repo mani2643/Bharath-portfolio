@@ -1,6 +1,8 @@
 const progressBar = document.querySelector('.scroll-progress');
 const navlinks = document.querySelectorAll('.nav-links a');
 const sections = document.querySelectorAll('main section');
+const navbar = document.querySelector('#navbar');
+const overlay = document.querySelector('#overlay');
 
 window.addEventListener('scroll',()=>{
     const scrollTop = window.scrollY;
@@ -27,4 +29,18 @@ const observer = new IntersectionObserver((entries)=>{
 
 sections.forEach((section)=>{
     observer.observe(section);
+})
+
+function openSidebar(){
+    navbar.classList.add('show');
+    overlay.classList.add('show');
+}
+
+function closeSidebar(){
+    navbar.classList.remove('show');
+    overlay.classList.remove('show');
+}
+
+navlinks.forEach((link)=>{
+    link.addEventListener('click',closeSidebar);
 })
