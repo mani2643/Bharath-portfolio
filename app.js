@@ -7,7 +7,7 @@ const overlay = document.querySelector('#overlay');
 window.addEventListener('scroll',()=>{
     const scrollTop = window.scrollY;
     const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (scrollTop/scrollableHeight)*100;
+    const progress = scrollableHeight > 0 ? (scrollTop/scrollableHeight)*100 : 0;
 
     progressBar.style.width = `${progress}%`;
 })

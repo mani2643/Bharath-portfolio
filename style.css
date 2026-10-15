@@ -96,6 +96,7 @@ a{
     position:relative;
     top:10px;
     left:10px;
+    cursor:pointer;
 }
 #close-sidebar-button svg{
     color:var(--text);
@@ -169,12 +170,24 @@ a{
     background-size:45px 45px;
 }
 
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
 .hero-copy{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
     justify-content:center;
     gap:0.9rem;
+    animation:fadeIn 500ms ease;
 }
 .hero-copy p:not(.hero-description){
     color:#9be58c;
@@ -253,6 +266,7 @@ a{
 .code-scene{
     padding:10px 0;
     position:relative;
+    animation:fadeIn 500ms ease;
 }
 .code-window{
     border:1px solid #39304f;
@@ -684,7 +698,8 @@ footer{
         position:fixed;
         background-color:var(--surface);
         top:0;
-        right:-100%;
+        right:0;
+        transform:translateX(100%);
         height:100vh;
         width:min(15em,100%);
         flex-direction:column;
@@ -692,10 +707,10 @@ footer{
         justify-content:start;
         border-left:1px solid var(--card-hover);
         z-index:1000;
-        transition:right 300ms ease-out;
+        transition:transform 300ms ease-out;
     }
     .nav-links.show{
-        right:0;
+        transform:translateX(0);
     }
     #overlay.show{
         display:block;
